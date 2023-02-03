@@ -7,8 +7,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float walkingSpeed = 7.5f;
-    [SerializeField] float runningSpeed = 11.5f;
-    [SerializeField] float jumpSpeed = 8.0f;
     [SerializeField] float gravity = 20.0f;
     [SerializeField] Camera playerCamera;
     [SerializeField] float lookSpeed = 2.0f;
@@ -48,10 +46,10 @@ public class PlayerController : MonoBehaviour
         // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
         // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
         // as an acceleration (ms^-2)
-        if (!characterController.isGrounded)
-        {
-            moveDirection.y -= gravity * Time.deltaTime;
-        }
+        //if (!characterController.isGrounded)
+        //{
+        //    moveDirection.y -= gravity * Time.deltaTime;
+        //}
 
         // Move the controller
         characterController.Move(moveDirection * Time.deltaTime);
