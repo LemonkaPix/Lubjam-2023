@@ -4,8 +4,9 @@ using UnityEngine;
 public class TimeTravelBehaviour : MonoBehaviour
 {
     [SerializeField] KeyCode timeTravelKey;
-    [SerializeField] GameObject timeTravelCamera;
-    float cooldownTime = 0.5f;
+    [SerializeField] GameObject[] urpObjects;
+    public bool playerHasWatch = false;
+    float cooldownTime = 3f;
     bool onCooldown = false;
 
 
@@ -17,13 +18,19 @@ public class TimeTravelBehaviour : MonoBehaviour
 
     IEnumerator timeTravel()
     {
-        if (timeTravelCamera == null) yield break;
-
-        if (timeTravelCamera.activeInHierarchy) timeTravelCamera.SetActive(false);
-        else timeTravelCamera.SetActive(true);
+        if (urpObjects[0].activeInHierarchy)
+        {
+            urpObjects[0].SetActive(false);
+            urpObjects[1].SetActive(true);
+        }
+        else
+        {
+            urpObjects[0].SetActive(true);
+            urpObjects[1].SetActive(false);
+        }
 
         onCooldown = true;
-        yield return cooldownTime;
+        yield return new WaitForSeconds(cooldownTime);
         onCooldown = false;
     }    
 
@@ -34,10 +41,6 @@ public class TimeTravelBehaviour : MonoBehaviour
         {
             Debug.Log("Time travel");
             StartCoroutine(timeTravel());
-
-
-
-
         }
     }
 }
