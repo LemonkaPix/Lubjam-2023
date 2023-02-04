@@ -9,12 +9,14 @@ public class TimeTravelBehaviour : MonoBehaviour
 {
     [SerializeField] KeyCode timeTravelKey;
     [SerializeField] GameObject[] urpObjects;
+    [SerializeField] Camera[] cameras;
+    [SerializeField] GameObject[] players;
     [SerializeField] GameObject[] cameras;
     [SerializeField] TextMeshProUGUI YearText;
     public bool playerHasWatch = false;
     bool tpCooldown = false;
     bool onCooldown = false;
-    bool isFuture = false;
+    public bool isFuture = false;
 
 
 
@@ -52,15 +54,23 @@ public class TimeTravelBehaviour : MonoBehaviour
         StartCoroutine(yearTextAnim());
 
         yield return new WaitUntil(() => imageColor.color.a == 1);
-        transform.position = new Vector3(transform.position.x, transform.position.y + (isFuture ? -500 : 500), transform.position.z);
         // Teleporting player to past
 
 
         // Changing camera effects
         urpObjects[0].SetActive(isFuture);
         urpObjects[1].SetActive(!isFuture);
-        cameras[0].SetActive(isFuture);
-        cameras[1].SetActive(!isFuture);
+        cameras[0].enabled = isFuture;
+        cameras[1].enabled = !isFuture;
+        cameras[0].transform.parent.gameObject.SetActive(isFuture);
+        cameras[1].transform.parent.gameObject.SetActive(!isFuture);
+        players[0].GetComponent<PlayerController>().canMove = false;
+        players[1].GetComponent<PlayerController>().canMove = false;
+
+        yield return new WaitForSeconds(2f);
+
+        players[0].GetComponent<PlayerController>().canMove = true;
+        players[1].GetComponent<PlayerController>().canMove = true;
         yield return new WaitUntil(() => imageColor.color.a == 0);
         Destroy(screenFlash);
         isFuture = !isFuture;
