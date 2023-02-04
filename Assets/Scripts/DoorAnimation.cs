@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DoorAnimation : MonoBehaviour
 {
-    public Animator anim;
+    public Animator animator;
     public bool trigger;
     public bool isLocked;
     public int keyId;
@@ -12,27 +12,27 @@ public class DoorAnimation : MonoBehaviour
 
     void Start()
     {
-        anim.SetBool("isOpen", true);
-        
+        animator.SetBool("isOpen", true);
+
     }
 
     public void onClick()
     {
-        if(isLocked)
+        if (isLocked)
         {
-            
+
             return;
         }
 
 
-            trigger = anim.GetBool("isOpen");
-            if (!trigger)
-            {
-                anim.SetBool("isOpen", true);
-            }
-            else
-            {
-                anim.SetBool("isOpen", false);
-            }
+        trigger = animator.GetBool("isOpen");
+        if (!trigger)
+        {
+            animator.SetBool("isOpen", true);
         }
+        else
+        {
+            animator.SetBool("isOpen", false);
+        }
+    }
 }
