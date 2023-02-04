@@ -6,15 +6,4 @@ public class PlayerInventory : MonoBehaviour
 {
 
     public List<GameObject> inventory;
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

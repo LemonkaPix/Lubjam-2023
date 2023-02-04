@@ -141,11 +141,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!20 &233822446 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 234728939601825262, guid: 2432778f10a31124b85f7f139ede2b7c, type: 3}
-  m_PrefabInstance: {fileID: 461013352}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &390052063
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,11 +316,6 @@ Transform:
   m_Father: {fileID: 688865793}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &562719950 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 234728939601825262, guid: 2432778f10a31124b85f7f139ede2b7c, type: 3}
-  m_PrefabInstance: {fileID: 2060270526}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &602854031
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,6 +759,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &965366651 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 234728939601825260, guid: 2432778f10a31124b85f7f139ede2b7c, type: 3}
+  m_PrefabInstance: {fileID: 461013352}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1252750914 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 234728939601825260, guid: 2432778f10a31124b85f7f139ede2b7c, type: 3}
+  m_PrefabInstance: {fileID: 2060270526}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1508728164
 GameObject:
   m_ObjectHideFlags: 0
@@ -850,8 +850,8 @@ MonoBehaviour:
   - {fileID: 2011038182}
   - {fileID: 3291405873462771190, guid: ea870122c8234de48900ae0f4f339be9, type: 3}
   cameras:
-  - {fileID: 233822446}
-  - {fileID: 562719950}
+  - {fileID: 965366651}
+  - {fileID: 1252750914}
   YearText: {fileID: 1889463694}
   playerHasWatch: 0
 --- !u!4 &1529576241
@@ -1044,9 +1044,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 234728939601825260, guid: 2432778f10a31124b85f7f139ede2b7c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 234728939601825262, guid: 2432778f10a31124b85f7f139ede2b7c, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 234728939772853445, guid: 2432778f10a31124b85f7f139ede2b7c, type: 3}
       propertyPath: m_RootOrder

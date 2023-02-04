@@ -9,7 +9,7 @@ public class TimeTravelBehaviour : MonoBehaviour
 {
     [SerializeField] KeyCode timeTravelKey;
     [SerializeField] GameObject[] urpObjects;
-    [SerializeField] Camera[] cameras;
+    [SerializeField] GameObject[] cameras;
     [SerializeField] TextMeshProUGUI YearText;
     public bool playerHasWatch = false;
     bool tpCooldown = false;
@@ -59,8 +59,8 @@ public class TimeTravelBehaviour : MonoBehaviour
         // Changing camera effects
         urpObjects[0].SetActive(isFuture);
         urpObjects[1].SetActive(!isFuture);
-        cameras[0].enabled = isFuture;
-        cameras[1].enabled = !isFuture;
+        cameras[0].SetActive(isFuture);
+        cameras[1].SetActive(!isFuture);
         yield return new WaitUntil(() => imageColor.color.a == 0);
         Destroy(screenFlash);
         isFuture = !isFuture;
