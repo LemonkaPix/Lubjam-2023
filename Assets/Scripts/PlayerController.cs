@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Camera playerCamera;
     [SerializeField] float lookSpeed = 2.0f;
     [SerializeField] float lookXLimit = 45.0f;
+    [SerializeField] Transform otherPlayer;
+    [SerializeField] bool futurePlayer;
 
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
@@ -20,6 +22,14 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool canMove = true;
     [HideInInspector] public bool playerIsMoving;
     //[HideInInspector] public bool isRunning;
+    private void OnEnable()
+    {
+        characterController = GetComponent<CharacterController>();
+        characterController.enabled = false;
+        transform.position = new Vector3(otherPlayer.position.x, otherPlayer.position.y + (futurePlayer ? 500 : -500), otherPlayer.position.z);
+        characterController.enabled = true;
+
+    }
 
     void Start()
     {
