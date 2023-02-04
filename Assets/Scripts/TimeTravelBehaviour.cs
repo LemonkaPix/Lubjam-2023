@@ -11,7 +11,6 @@ public class TimeTravelBehaviour : MonoBehaviour
     [SerializeField] GameObject[] urpObjects;
     [SerializeField] Camera[] cameras;
     [SerializeField] GameObject[] players;
-    [SerializeField] GameObject[] cameras;
     [SerializeField] TextMeshProUGUI YearText;
     public bool playerHasWatch = false;
     bool tpCooldown = false;
@@ -67,7 +66,7 @@ public class TimeTravelBehaviour : MonoBehaviour
         players[0].GetComponent<PlayerController>().canMove = false;
         players[1].GetComponent<PlayerController>().canMove = false;
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         players[0].GetComponent<PlayerController>().canMove = true;
         players[1].GetComponent<PlayerController>().canMove = true;
