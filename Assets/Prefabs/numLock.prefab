@@ -92,6 +92,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b900d6a99de8204584a7b79145ddb15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onRightCombination:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Test, Assembly-CSharp
+        m_MethodName: TestMe
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   nums:
   - {fileID: 3868559807886384874}
   - {fileID: 3868559809045574399}

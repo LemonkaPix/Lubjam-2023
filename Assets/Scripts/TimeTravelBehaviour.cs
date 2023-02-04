@@ -11,6 +11,7 @@ public class TimeTravelBehaviour : MonoBehaviour
     [SerializeField] GameObject[] urpObjects;
     [SerializeField] Camera[] cameras;
     [SerializeField] GameObject[] players;
+    [SerializeField] GameObject[] cameras;
     [SerializeField] TextMeshProUGUI YearText;
     public bool playerHasWatch = false;
     bool tpCooldown = false;
@@ -70,7 +71,6 @@ public class TimeTravelBehaviour : MonoBehaviour
 
         players[0].GetComponent<PlayerController>().canMove = true;
         players[1].GetComponent<PlayerController>().canMove = true;
-
         yield return new WaitUntil(() => imageColor.color.a == 0);
         Destroy(screenFlash);
         isFuture = !isFuture;
