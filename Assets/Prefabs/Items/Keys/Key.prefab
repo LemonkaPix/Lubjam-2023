@@ -13700,7 +13700,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6f881b1c017ee74b9500ad986358053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemType: 0
   keyId: 1
+  timeTravelBehaviour: {fileID: 0}
 --- !u!114 &6866780589202989141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13729,9 +13731,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   player: {fileID: 0}
-  distance: 15
+  distance: 5
   canSelfTalk: 1
   repeatSelfTalk: 0
   selfTalkType: 1
   selfTalk: {fileID: 0}
-  selfTalkText: You picked up a key..
+  selfTalkText: A key.. I wonder if I can use it for something..?

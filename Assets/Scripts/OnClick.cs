@@ -16,6 +16,7 @@ enum selfTalkType
 
 public class OnClick : MonoBehaviour
 {
+    [Header("Mainx")]
     [SerializeField] UnityEvent onClick;
     [SerializeField] Transform player;
     [SerializeField] float distance;
@@ -27,7 +28,10 @@ public class OnClick : MonoBehaviour
     [SerializeField] selfTalkType selfTalkType = selfTalkType.None;
     [SerializeField] TextMeshProUGUI selfTalk;
     [SerializeField] string selfTalkText;
+    [SerializeField] string doorLockedText;
 
+    [Header("Optional")]
+    [SerializeField] UnityEvent tutorialTextPopUp;
     PlayerInventory plrInventory;
 
     private void Start()
@@ -38,40 +42,54 @@ public class OnClick : MonoBehaviour
     private void OnMouseDown()
         {
         if (EventSystem.current.IsPointerOverGameObject()) return;
-        if (Vector3.Distance(player.position, transform.position) <= distance) onClick.Invoke();
 
-        if(canSelfTalk)
+
+        if (Vector3.Distance(player.position, transform.position) <= distance)
         {
+            onClick.Invoke();
 
-            if(selfTalkType == selfTalkType.Door)
+            if (tutorialTextPopUp != null) tutorialTextPopUp.Invoke();
+
+            if (canSelfTalk)
             {
-                DoorAnimation doorScript = transform.GetComponent<DoorAnimation>();
-                if (doorScript.isLocked == false) return;
 
-                foreach (GameObject item in plrInventory.inventory)
+                if (selfTalkType == selfTalkType.Door)
                 {
-                    if (item.GetComponent<KeyData>().keyId == doorScript.keyId)
-                    {
-                        plrInventory.inventory.Remove(item);
-                        doorScript.isLocked = false;
+                    DoorAnimation doorScript = transform.GetComponent<DoorAnimation>();
+                    if (doorScript.isLocked == false) return;
 
+                    foreach (GameObject item in plrInventory.inventory)
+                    {
+                        if (item.GetComponent<ItemData>().itemId == doorScript.keyId)
+                        {
+                            plrInventory.inventory.Remove(item);
+                            doorScript.isLocked = false;
+
+                            selfTalk.gameObject.SetActive(false);
+
+                            selfTalk.text = selfTalkText;
+                            selfTalk.gameObject.SetActive(true);
+                            break;
+                        }
+                    }
+                    if (doorScript.isLocked == true) 
+                    {
                         selfTalk.gameObject.SetActive(false);
 
-                        selfTalk.text = selfTalkText;
+                        selfTalk.text = doorLockedText;
                         selfTalk.gameObject.SetActive(true);
-                        break;
-                    }
+                    };
                 }
-            }
 
-            else if(selfTalkType == selfTalkType.Item)
-            {
-                if (!repeatSelfTalk) canSelfTalk = false;
+                else if (selfTalkType == selfTalkType.Item)
+                {
+                    if (!repeatSelfTalk) canSelfTalk = false;
 
-                selfTalk.gameObject.SetActive(false);
+                    selfTalk.gameObject.SetActive(false);
 
-                selfTalk.text = selfTalkText;
-                selfTalk.gameObject.SetActive(true);
+                    selfTalk.text = selfTalkText;
+                    selfTalk.gameObject.SetActive(true);
+                }
             }
         }
     }
