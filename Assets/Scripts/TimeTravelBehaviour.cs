@@ -70,7 +70,7 @@ public class TimeTravelBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(timeTravelKey) && !onCooldown)
+        if (Input.GetKeyDown(timeTravelKey) && !onCooldown && playerHasWatch)
         {
             Debug.Log("Time travel");
 
