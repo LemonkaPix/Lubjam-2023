@@ -82,10 +82,10 @@ public class PlayerController : MonoBehaviour
         // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
         // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
         // as an acceleration (ms^-2)
-        //if (!characterController.isGrounded)
-        //{
-        //    moveDirection.y -= gravity * Time.deltaTime;
-        //}
+        if (!characterController.isGrounded)
+        {
+            moveDirection.y -= gravity * Time.deltaTime;
+        }
 
         // Move the controller
         characterController.Move(moveDirection * Time.deltaTime);

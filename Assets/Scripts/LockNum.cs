@@ -17,18 +17,19 @@ public class LockNum : MonoBehaviour
     private void Start()
     {
         codeLock = gameObject.transform.parent.GetComponent<CodeLock>();
-        text.text = $"{combination[(combinationIndex + 1) % combination.Length]}\n" +
-        $"{combination[combinationIndex]}\n" +
-        $"{combination[(combinationIndex + combination.Length - 1) % combination.Length]}";
+        text.text = $"{combination[combinationIndex]}\n";
+    }
+
+    private void OnMouseDown()
+    {
+        Change();
     }
 
     public void Change()
     {
         combinationIndex = (combinationIndex + 1) % combination.Length;
 
-        text.text = $"{combination[(combinationIndex + 1) % combination.Length]}\n" +
-        $"{combination[combinationIndex]}\n" +
-        $"{combination[(combinationIndex + combination.Length - 1) % combination.Length]}";
+        text.text = $"{combination[combinationIndex]}\n";
 
         combValue = combination[combinationIndex];
 
