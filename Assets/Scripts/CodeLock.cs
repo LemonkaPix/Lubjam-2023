@@ -11,8 +11,7 @@ public class CodeLock : MonoBehaviour
 
     public void CheckCombination()
     {
-        bool isRight = true;
         for (int i = 0; i < nums.Length; i++) if (nums[i].combValue != rightCombination[i]) return;
-        if (isRight) onRightCombination.Invoke();
+        onRightCombination.Invoke();
     }
 }
