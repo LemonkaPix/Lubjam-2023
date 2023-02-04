@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BarrelLock : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class BarrelLock : MonoBehaviour
     [SerializeField] int Index = 0;
     bool directionRight = false;
     [SerializeField] float lerpSpeed = 1;
+    [SerializeField] UnityEvent onRightCombination;
 
     public void RotateRight()
     {
@@ -21,6 +23,7 @@ public class BarrelLock : MonoBehaviour
         Index = (Index + 1) % 6;
         if (Index >= 0) currCombination[0] = Index.ToString()[0];
         else currCombination[0] = (6 + Index).ToString()[0];
+        CheckCommb();
     }
     public void RotateLeft()
     {
@@ -29,8 +32,15 @@ public class BarrelLock : MonoBehaviour
         Index = (Index - 1) % 6;
         if (Index >= 0) currCombination[0] = Index.ToString()[0];
         else currCombination[0] = (6 - Index).ToString()[0];
-
+        CheckCommb();
     }
+
+    public void CheckCommb()
+    {
+        for (int i = 0; i < currCombination.Count; i++) if (currCombination[i] != rightCombination[i]) return;
+        onRightCombination.Invoke();
+    }
+
     [Button]
     void AddComb()
     {
