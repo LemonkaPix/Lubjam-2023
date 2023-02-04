@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
         moveDirection.y = movementDirectionY;
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && pauseUi != null)
         {
             IsPaused = !IsPaused;
             if (IsPaused)
