@@ -31,7 +31,10 @@ public class OnClick : MonoBehaviour
     [SerializeField] string doorLockedText;
 
     [Header("Optional")]
+    [SerializeField] bool doorBarricaded = false;
+
     [SerializeField] UnityEvent tutorialTextPopUp;
+
     PlayerInventory plrInventory;
 
     private void Start()
@@ -69,6 +72,18 @@ public class OnClick : MonoBehaviour
 
                             selfTalk.text = selfTalkText;
                             selfTalk.gameObject.SetActive(true);
+                            break;
+                        }
+
+                        else if(item.GetComponent<ItemData>().itemType == ItemType.Crowbar && doorBarricaded)
+                        {
+                            doorScript.isLocked = false;
+
+                            selfTalk.gameObject.SetActive(false);
+
+                            selfTalk.text = selfTalkText;
+                            selfTalk.gameObject.SetActive(true);
+
                             break;
                         }
                     }

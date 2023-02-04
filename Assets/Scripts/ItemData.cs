@@ -8,7 +8,8 @@ public enum ItemType
 {
     Item, 
     Watch,
-    Flashlight
+    Flashlight,
+    Crowbar
 }
 
 public class ItemData : MonoBehaviour
@@ -29,7 +30,7 @@ public class ItemData : MonoBehaviour
     public void onClick()
     {
         
-        if(itemType == ItemType.Item) 
+        if(itemType == ItemType.Item || itemType == ItemType.Crowbar) 
         {
             plrInventory.inventory.Add(gameObject);
         }
